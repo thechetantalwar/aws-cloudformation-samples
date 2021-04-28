@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Creating an Ec2 Instance'
+Parameters:
+    SshKey:
+        Description: CHoose SSH Key
+        Type: AWS::EC2::KeyPair::KeyName
+Resources:
+    Server1:
+        Type: AWS::EC2::Instance
+        Properties:
+            ImageId: YOUR_AMI_ID
+            InstanceType: t2.micro
+            KeyName:
+                Ref: SshKey
+            SecurityGroups:
+                - Ref: SG1
+    SG1:
+        Type: AWS::EC2::SecurityGroup
+        Properties:
+            GroupDescription: "Enable port 22 and 80"
+            SecurityGroupIngress:
+            - CidrIp: 0.0.0.0/0
+              FromPort: 22
+              IpProtocol: tcp
+              ToPort: 22
+            - CidrIp: 0.0.0.0/0
+              FromPort: 80
+              IpProtocol: tcp
+              ToPort: 80
+Outputs:
+    PublicEndpoint:
+        Description: Public ip of Ec2 Instance
+        Value: !GetAtt Server1.PublicIp
