@@ -6,7 +6,7 @@ Resources:
         Properties:
             ImageId: YOUR_AMI_ID
             InstanceType: t2.micro
-            KeyName: YOUR_KEY_NAME
+            KeyName: YOUR_KEYPAIR_NAME
             SecurityGroups:
                 - Ref: SG1
     SG1:

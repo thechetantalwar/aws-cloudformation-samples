@@ -4,6 +4,6 @@ Resources:
     Server1:
         Type: AWS::EC2::Instance
         Properties:
-            ImageId: ami-02701bcdc5509e57b
+            ImageId: YOUR_AMI_ID
             InstanceType: t2.micro
-            KeyName: 26-april
+            KeyName: YOUR_KEYPAIR_NAME
